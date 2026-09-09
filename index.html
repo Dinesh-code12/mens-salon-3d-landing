@@ -7,105 +7,237 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="canvas-container"></div>
-    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h1>GroomLux</h1>
+                <h1>✂️ GroomLux</h1>
             </div>
             <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#" class="cta-button">Book Now</a></li>
+                <li><a href="#booking" class="cta-button">Book Now</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section with 3D Canvas -->
+    <section id="hero" class="hero">
+        <div id="canvas-container"></div>
         <div class="hero-content">
             <h2>Premium Grooming Experience</h2>
             <p>Elevate your style with our luxury salon services</p>
-            <button class="hero-btn">Explore Services</button>
+            <a href="#services" class="hero-btn">Explore Services</a>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">✂️</div>
-                <h3>Premium Haircut</h3>
-                <p>Expert scissor work and modern styles tailored to your face shape</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🧔</div>
-                <h3>Beard Grooming</h3>
-                <p>Precision beard trim, shaping, and conditioning treatments</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💆</div>
-                <h3>Facial Treatment</h3>
-                <p>Rejuvenating facials with premium skincare products</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💇</div>
-                <h3>Hair Coloring</h3>
-                <p>Professional hair coloring with natural-looking results</p>
+        <div class="container">
+            <h2>Our Premium Services</h2>
+            <p class="section-subtitle">Expert grooming tailored to perfection</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Premium Haircut</h3>
+                    <p>Expert scissor work and modern styles tailored to your face shape. Our master barbers stay updated with latest trends.</p>
+                    <span class="price">$35</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧔</div>
+                    <h3>Beard Grooming</h3>
+                    <p>Precision beard trim, shaping, and conditioning treatments. Get that perfect beard look maintained professionally.</p>
+                    <span class="price">$25</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💆</div>
+                    <h3>Facial Treatment</h3>
+                    <p>Rejuvenating facials with premium skincare products. Deep cleansing and nourishing treatment for healthy skin.</p>
+                    <span class="price">$45</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💇</div>
+                    <h3>Hair Coloring</h3>
+                    <p>Professional hair coloring with natural-looking results. Premium dyes and expert application techniques.</p>
+                    <span class="price">$50</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💅</div>
+                    <h3>Hot Stone Massage</h3>
+                    <p>Relaxing therapeutic massage to ease tension and stress. Perfect after a long week.</p>
+                    <span class="price">$60</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧖</div>
+                    <h3>Head & Neck Massage</h3>
+                    <p>Specialized massage focusing on head and neck area. Ultimate relaxation experience.</p>
+                    <span class="price">$40</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="about-content">
+        <div class="container">
             <h2>About GroomLux</h2>
-            <p>We are a premium men's salon dedicated to providing exceptional grooming services. Our expert stylists combine traditional techniques with modern trends to deliver the perfect look tailored just for you.</p>
-            <div class="stats">
-                <div class="stat">
-                    <h3>500+</h3>
-                    <p>Satisfied Clients</p>
+            <p class="section-subtitle">Your destination for premium men's grooming</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>GroomLux is a premium men's salon dedicated to providing exceptional grooming services since 2009. Our expert stylists combine traditional barbering techniques with modern trends to deliver the perfect look tailored just for you.</p>
+                    <p>We believe that grooming is not just about looking good—it's about feeling confident and taking care of yourself. Every service is delivered with precision, professionalism, and a personal touch.</p>
+                    <ul class="features-list">
+                        <li>✓ Expert & Certified Stylists</li>
+                        <li>✓ Premium Quality Products</li>
+                        <li>✓ Luxury Ambiance</li>
+                        <li>✓ Personalized Service</li>
+                    </ul>
                 </div>
-                <div class="stat">
-                    <h3>10+</h3>
-                    <p>Expert Stylists</p>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat">
+                        <h3>12</h3>
+                        <p>Expert Stylists</p>
+                    </div>
+                    <div class="stat">
+                        <h3>15+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    <div class="stat">
+                        <h3>98%</h3>
+                        <p>Satisfaction Rate</p>
+                    </div>
                 </div>
-                <div class="stat">
-                    <h3>15+</h3>
-                    <p>Years Experience</p>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <h2>Book Your Appointment</h2>
+            <p class="section-subtitle">Reserve your slot with our expert stylists</p>
+            <div class="booking-form-container">
+                <form class="booking-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" placeholder="Phone Number" required>
+                        <select required>
+                            <option value="">Select Service</option>
+                            <option value="haircut">Premium Haircut</option>
+                            <option value="beard">Beard Grooming</option>
+                            <option value="facial">Facial Treatment</option>
+                            <option value="coloring">Hair Coloring</option>
+                            <option value="massage">Hot Stone Massage</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="date" required>
+                        <input type="time" required>
+                    </div>
+                    <textarea placeholder="Additional Notes" rows="3"></textarea>
+                    <button type="submit" class="submit-btn">Book Appointment</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3>📍 Location</h3>
-                <p>123 Style Street, Fashion City, FC 12345</p>
-                <h3>📞 Phone</h3>
-                <p>+1 (555) 123-4567</p>
-                <h3>⏰ Hours</h3>
-                <p>Mon - Fri: 10AM - 8PM<br>Sat - Sun: 11AM - 6PM</p>
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📍 Location</h3>
+                        <p>123 Style Street<br>Fashion City, FC 12345</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 Phone</h3>
+                        <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:info@groomlux.com">info@groomlux.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>⏰ Hours</h3>
+                        <p>Mon - Fri: 10AM - 8PM<br>Sat - Sun: 11AM - 6PM</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
             </div>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <p class="section-subtitle">Real reviews from satisfied customers</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Amazing haircut! The stylists really know what they're doing. Highly recommend!"</p>
+                    <h4>- John Smith</h4>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Best beard grooming experience ever. Professional and friendly staff!"</p>
+                    <h4>- Mike Johnson</h4>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"The massage really helped me relax. Will definitely come back."</p>
+                    <h4>- David Wilson</h4>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 GroomLux. All rights reserved. | Premium Men's Salon</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GroomLux</h4>
+                    <p>Premium Men's Salon & Grooming</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GroomLux. All rights reserved. | Premium Men's Salon</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
