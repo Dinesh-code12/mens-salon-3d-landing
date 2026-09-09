@@ -2,23 +2,30 @@
 let scene, camera, renderer;
 let barbershopChair;
 let particles = [];
+let isCanvasInitialized = false;
 
 function initThreeJS() {
+    if (isCanvasInitialized) return;
+    isCanvasInitialized = true;
+
+    const container = document.getElementById('canvas-container');
+    if (!container) return;
+
     // Scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x1a1a1a);
     scene.fog = new THREE.Fog(0x1a1a1a, 100, 1000);
 
     // Camera
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.set(0, 2, 5);
 
     // Renderer
-    const container = document.getElementById('canvas-container');
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowShadowMap;
     container.appendChild(renderer.domElement);
@@ -56,7 +63,11 @@ function createBarberChair() {
 
     // Base
     const baseGeometry = new THREE.CylinderGeometry(1, 1, 0.2, 32);
-    const baseMaterial = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.6, roughness: 0.4 });
+    const baseMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xd4af37, 
+        metalness: 0.6, 
+        roughness: 0.4 
+    });
     const base = new THREE.Mesh(baseGeometry, baseMaterial);
     base.position.y = 0;
     base.castShadow = true;
@@ -65,7 +76,11 @@ function createBarberChair() {
 
     // Pedestal
     const pedestalGeometry = new THREE.CylinderGeometry(0.3, 0.3, 1.5, 32);
-    const pedestalMaterial = new THREE.MeshStandardMaterial({ color: 0x2d2d2d, metalness: 0.8, roughness: 0.2 });
+    const pedestalMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0x2d2d2d, 
+        metalness: 0.8, 
+        roughness: 0.2 
+    });
     const pedestal = new THREE.Mesh(pedestalGeometry, pedestalMaterial);
     pedestal.position.y = 0.85;
     pedestal.castShadow = true;
@@ -74,7 +89,11 @@ function createBarberChair() {
 
     // Seat
     const seatGeometry = new THREE.SphereGeometry(0.6, 32, 32);
-    const seatMaterial = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.3, roughness: 0.7 });
+    const seatMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0x1a1a1a, 
+        metalness: 0.3, 
+        roughness: 0.7 
+    });
     const seat = new THREE.Mesh(seatGeometry, seatMaterial);
     seat.scale.y = 0.6;
     seat.position.y = 2;
@@ -92,7 +111,11 @@ function createBarberChair() {
 
     // Armrests
     const armrestGeometry = new THREE.BoxGeometry(0.2, 0.8, 0.8);
-    const armrestMaterial = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.5, roughness: 0.5 });
+    const armrestMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xd4af37, 
+        metalness: 0.5, 
+        roughness: 0.5 
+    });
     
     const leftArmrest = new THREE.Mesh(armrestGeometry, armrestMaterial);
     leftArmrest.position.set(-0.8, 2, 0);
@@ -116,7 +139,11 @@ function createScissors() {
 
     // Blade 1
     const blade1Geometry = new THREE.BoxGeometry(0.1, 1.5, 0.05);
-    const bladeMaterial = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, metalness: 0.9, roughness: 0.1 });
+    const bladeMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xc0c0c0, 
+        metalness: 0.9, 
+        roughness: 0.1 
+    });
     const blade1 = new THREE.Mesh(blade1Geometry, bladeMaterial);
     blade1.position.set(-0.2, 3.5, 2);
     blade1.rotation.z = 0.5;
@@ -137,7 +164,11 @@ function createScissors() {
 function createFloatingParticles() {
     const particleCount = 50;
     const particleGeometry = new THREE.SphereGeometry(0.05, 8, 8);
-    const particleMaterial = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0xd4af37 });
+    const particleMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xd4af37, 
+        emissive: 0xd4af37,
+        emissiveIntensity: 0.5
+    });
 
     for (let i = 0; i < particleCount; i++) {
         const particle = new THREE.Mesh(particleGeometry, particleMaterial);
@@ -183,12 +214,18 @@ function animate() {
     updateParticles();
 
     // Render scene
-    renderer.render(scene, camera);
+    if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+    }
 }
 
 function onWindowResize() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    if (!renderer || !camera) return;
+    
+    const container = document.getElementById('canvas-container');
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
@@ -201,7 +238,8 @@ window.addEventListener('load', initThreeJS);
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -211,12 +249,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission
+// Booking Form Submission
+const bookingForm = document.querySelector('.booking-form');
+if (bookingForm) {
+    bookingForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        
+        const name = this.querySelector('input[type="text"]').value;
+        alert(`Thank you, ${name}! Your appointment request has been received. We'll confirm your booking shortly.`);
+        this.reset();
+    });
+}
+
+// Contact Form Submission
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
+        
+        const name = this.querySelector('input[type="text"]').value;
+        alert(`Thank you for your message, ${name}! We'll get back to you soon.`);
         this.reset();
     });
 }
+
+// Add scroll animation for sections
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .stat, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.6s ease';
+    observer.observe(el);
+});
